@@ -10,18 +10,21 @@
 
     <link rel="stylesheet" href="./pages/index.css" />
   </head>
-  <body>
-    <div class="page">
+  <body class="page">
+    <div class="page__content">
       <header class="header">
         <img src="./images/around_the_us.svg" />
       </header>
       <section class="profile">
-        <img src="./images/Avatar.png" />
-        <div>
+        <img class="profile__image" src="./images/jacques-cousteau.png" />
+        <div class="profile__info">
           <h1 class="profile__title">Jacques Cousteau</h1>
+          <button class="profile__info-button">
+            <img src="./images/edit.svg" />
+          </button>
           <p class="profile__subtitle">Explorer</p>
         </div>
-        <button class="button">Button</button>
+        <button class="profile__button"><img src="./images/plus.svg" /></button>
       </section>
       <section class="cards"></section>
       <footer class="footer"></footer>
