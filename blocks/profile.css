@@ -61,3 +61,46 @@
 .profile__button:hover {
   opacity: 60%;
 }
+
+@media screen and (max-width: 775px) {
+  .profile__info {
+    padding-left: 10px;
+  }
+  .profile__add-button {
+    width: 10%;
+    padding: 0;
+  }
+  .profile__title {
+    font-size: 32px;
+  }
+  .profile__subtitle {
+    font-size: 16px;
+    line-height: 1.21;
+  }
+}
+
+@media screen and (max-width: 633px) {
+  .profile {
+    flex-direction: column;
+    max-width: 282px;
+  }
+  .profile__info {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    padding: 30px 0 36px;
+  }
+  .profile__title {
+    font-size: 22px;
+    line-height: 1.21;
+    text-align: center;
+  }
+  .profile__add-button {
+    width: 100%;
+  }
+  .profile__subtitle {
+    font-size: 14px;
+    line-height: 1.21;
+  }
+}

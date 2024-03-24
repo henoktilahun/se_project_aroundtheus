@@ -8,3 +8,16 @@
   width: 173px;
   height: 33px;
 }
+
+@media screen and (max-width: 633px) {
+  .header__logo {
+    width: 126px;
+    height: 24px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .header__logo {
+    padding-left: 19px;
+  }
+}
