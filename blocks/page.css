@@ -1,0 +1,24 @@
+.page {
+  max-width: 1280px;
+  height: 1217px;
+  background-color: black;
+  color: #fff;
+  margin: auto;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.page__content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 0 19px;
+  justify-content: center;
+}
+
+.page__section {
+  max-width: 880px;
+  width: 100%;
+  margin: 0 auto;
+}

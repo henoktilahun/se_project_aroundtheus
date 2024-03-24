@@ -1,96 +1,70 @@
 @import url(../vendor/normalize.css);
+@import url(../vendor/fonts.css);
 @import url(../blocks/page.css);
 @import url(../blocks/header.css);
 @import url(../blocks/profile.css);
 @import url(../blocks/cards.css);
 @import url(../blocks/footer.css);
 
-/* ---------------------- pages section ----------------------*/
-
-.page {
-  max-width: 1280px;
-  height: 1217px;
-  background-color: black;
-  margin: auto;
-  font-family: "Inter", Arial, sans-serif;
-  font-size: 16px;
-  line-height: 20px;
+@media screen and (max-width: 775px) {
+  .profile__info {
+    padding-left: 10px;
+  }
+  .profile__add-button {
+    width: 10%;
+    padding: 0;
+  }
+  .profile__title {
+    font-size: 32px;
+  }
+  .profile__subtitle {
+    font-size: 16px;
+    line-height: 1.21;
+  }
 }
 
-.page__content {
-  margin: 0 200px;
+@media screen and (max-width: 633px) {
+  .profile {
+    flex-direction: column;
+    max-width: 282px;
+  }
+  .header__logo {
+    width: 126px;
+    height: 24px;
+  }
+  .profile__info {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    padding: 30px 0 36px;
+  }
+  .profile__title {
+    font-size: 22px;
+    line-height: 1.21;
+    text-align: center;
+  }
+  .profile__add-button {
+    width: 100%;
+    margin: 0 19px;
+  }
+  .profile__subtitle {
+    font-size: 14px;
+    line-height: 1.21;
+  }
 }
 
-/* ---------------------- header section ----------------------*/
-
-.header {
-  max-width: 880px;
-  height: 74px;
-  /* margin: 0 200px; */
-  padding-top: 45px;
-}
-
-/* ---------------------- profile section ----------------------*/
-
-.profile {
-  max-width: 880px;
-  height: 120px;
-  color: #fff;
-  display: flex;
-  align-items: center;
-}
-
-.profile__image {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  /* padding: 3.75px 26.25px 3.75px 22.5px; */
-}
-
-.profile__info {
-  max-width: 415px;
-  height: 77px;
-  display: grid;
-  grid-template-areas:
-    "title button"
-    "description description";
-  align-items: center;
-  column-gap: 18px;
-  row-gap: 7px;
-  padding: 22px 165px 21px 30px;
-}
-
-.profile__title {
-  font-family: "Inter", Arial, sans-serif;
-  font-weight: 500;
-  font-size: 42px;
-  line-height: 48px;
-  margin: 0;
-}
-
-.profile__info-button {
-  width: 24px;
-  height: 24px;
-  border-radius: 1px;
-  border-color: #fff;
-  border-style: solid;
-  background-color: black;
-}
-
-.profile__subtitle {
-  font-family: Inter;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 22px;
-  margin: 0;
-}
-
-.profile__button {
-  width: 150px;
-  height: 50px;
-  border-radius: 2;
-  border: 2;
-  border-color: #fff;
-  border-style: solid;
-  background-color: black;
+@media screen and (max-width: 320px) {
+  .page__content {
+    padding: 0;
+  }
+  .header__logo {
+    padding-left: 19px;
+  }
+  .footer__copyright {
+    font-size: 14px;
+    line-height: 1.21;
+  }
+  .footer {
+  }
 }
