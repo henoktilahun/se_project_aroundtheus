@@ -1,5 +1,4 @@
 .profile {
-  height: 100%;
   display: flex;
   align-items: center;
   padding-top: 40px;
@@ -12,8 +11,6 @@
 }
 
 .profile__info {
-  /* max-width: 415px; */
-  height: 77px;
   display: grid;
   grid-template-areas:
     "title button"
@@ -30,31 +27,40 @@
   font-size: 42px;
   line-height: 1.14;
   margin: 0;
+  grid-area: title;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .profile__edit-button {
+  background: transparent url(../images/edit.svg) no-repeat center;
   width: 24px;
   height: 24px;
   border: 1px solid #fff;
-  background: transparent;
   padding: 0;
+  grid-area: button;
 }
 
 .profile__subtitle {
-  font-family: Inter;
+  font-family: "Inter", Arial, sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 1.2;
   margin: 0;
+  grid-area: description;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .profile__add-button {
+  background: transparent url(../images/plus.svg) no-repeat center;
   width: 150px;
   height: 50px;
-  border-radius: 2px;
-  border-color: #fff;
-  border-style: solid;
-  background-color: black;
+  border: 2px solid #fff;
   margin-left: auto;
 }
 
@@ -75,7 +81,6 @@
   }
   .profile__subtitle {
     font-size: 16px;
-    line-height: 1.21;
   }
 }
 
@@ -83,10 +88,12 @@
   .profile {
     flex-direction: column;
     max-width: 282px;
+    padding-top: 42px;
   }
   .profile__info {
     display: flex;
     flex-wrap: wrap;
+    gap: 14px;
     width: 100%;
     justify-content: center;
     padding: 30px 0 36px;

@@ -1,0 +1,43 @@
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  list-style: none;
+}
+
+.card__image {
+  width: 282px;
+  height: 282px;
+  margin: 0;
+  border-radius: 10px 10px 0 0;
+}
+
+.card__content {
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 30px 25px 20px;
+  color: black;
+}
+
+.card__subheading {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: 0em;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card__button {
+  background: transparent url(../images/heart.svg) center no-repeat;
+  width: 21px;
+  height: 18px;
+  border: none;
+}
+
+.card__button:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}

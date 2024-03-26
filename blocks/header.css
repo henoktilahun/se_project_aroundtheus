@@ -1,5 +1,5 @@
 .header {
-  height: 74px;
+  min-height: 74px;
   padding-top: 45px;
   border-bottom: 1px solid rgba(84, 84, 84, 0.7);
 }
@@ -7,6 +7,7 @@
 .header__logo {
   width: 173px;
   height: 33px;
+  padding-bottom: 41px;
 }
 
 @media screen and (max-width: 633px) {
@@ -17,7 +18,11 @@
 }
 
 @media screen and (max-width: 320px) {
+  .header {
+    padding-top: 28px;
+  }
   .header__logo {
     padding-left: 19px;
+    padding-bottom: 32px;
   }
 }
