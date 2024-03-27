@@ -10,4 +10,7 @@ Tech Used:
 - HTML
 - CSS
 
-**Link to website:** [Around The U.S.](https://henoktilahun.github.io/se_project_aroundtheus/)
+**Links**
+
+- Webstie: [Around The U.S.](https://henoktilahun.github.io/se_project_aroundtheus/)
+- Vedeo Explenation: [Around The U.S.](https://youtu.be/YRdP9pHn0bM)
