@@ -2,13 +2,14 @@
 
 ### Overview
 
-This website is a responsive website displaying the travels of Jacques Cousteau around the U.S.
+This website is a responsive website displaying the travels of the user around the United States. They are able to edit their profile information. 
 
 Tech Used:
 
 - Figma
 - HTML
 - CSS
+- JavaScript
 
 **Links**
 
