@@ -108,13 +108,20 @@
             placeholder="Image Link"
             required
           />
-          <button class="modal__button modal__save" type="submit">Save</button>
+          <button class="modal__button modal__save" type="submit">
+            Create
+          </button>
         </form>
       </div>
     </div>
     <template id="card-template">
       <li class="card">
         <img src="" alt="" class="card__image" />
+        <button
+          class="card__delete-button"
+          type="submit"
+          aria-label="Delete"
+        ></button>
         <div class="card__content">
           <h2 class="card__subheading"></h2>
           <button
