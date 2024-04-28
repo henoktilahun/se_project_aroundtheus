@@ -32,14 +32,18 @@
   max-width: 210px;
 }
 
-.card__button {
+.card__like-button {
   background: transparent url(../images/heart.svg) center no-repeat;
   width: 21px;
   height: 18px;
   border: none;
 }
 
-.card__button:hover {
+.card__like-button_active {
+  background-image: url(../images/Union.svg);
+}
+
+.card__like-button:hover {
   cursor: pointer;
   opacity: 0.5;
 }
