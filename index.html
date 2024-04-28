@@ -39,6 +39,7 @@
           </div>
           <button
             class="profile__button profile__add-button"
+            id="profile-add-button"
             aria-label="Add"
             type="button"
           ></button>
@@ -51,6 +52,7 @@
         <p class="footer__copyright">&copy; 2024 Around The U.S.</p>
       </footer>
     </div>
+    <!--- Edit profile modal -->
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button
@@ -74,6 +76,36 @@
             type="text"
             name="subtitle"
             placeholder="Description"
+            required
+          />
+          <button class="modal__button modal__save" type="submit">Save</button>
+        </form>
+      </div>
+    </div>
+    <!--- Add image modal -->
+    <div class="modal" id="profile-add-modal">
+      <div class="modal__container">
+        <button
+          class="modal__button modal__close"
+          id="modal-close-button"
+          type="button"
+        ></button>
+        <h3 class="modal__description">New Place</h3>
+        <form class="modal__form">
+          <input
+            class="modal__input"
+            id="card-title-input"
+            type="text"
+            name="title"
+            placeholder="Title"
+            required
+          />
+          <input
+            class="modal__input"
+            id="card-link-input"
+            type="text"
+            name="link"
+            placeholder="Image Link"
             required
           />
           <button class="modal__button modal__save" type="submit">Save</button>

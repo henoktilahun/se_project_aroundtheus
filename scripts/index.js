@@ -27,28 +27,32 @@ const initialCards = [
 
 //Get all elements needed
 const editButton = document.querySelector("#profile-edit-button");
+const addCardButton = document.querySelector("#profile-add-button");
+const cardAddModal = document.querySelector("#profile-add-modal");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileModalcloseButton = profileEditModal.querySelector(".modal__close");
+const cardModalcloseButton = cardAddModal.querySelector(".modal__close");
 const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
 const profileTitleInput = document.querySelector("#profile-title-input");
 const profileSubtitleInput = document.querySelector("#profile-subtitle-input");
 const profileEditForm = profileEditModal.querySelector(".modal__form");
+//const cardAddFrom = profileAddModal.querySelector(".modal__from");
 const cardListElement = document.querySelector(".cards__list");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
 /** function to close modal*/
-function closeModal() {
-  profileEditModal.classList.remove("modal_opened");
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
 }
 
 /** function to open modal */
-function openModal() {
-  profileEditModal.classList.add("modal_opened")
+function openModal(modal) {
+  modal.classList.add("modal_opened");
 }
 
-function fillProfileForm() {
+function fillProfileForm(evt) {
   profileTitleInput.value = profileTitle.textContent;
   profileSubtitleInput.value = profileSubtitle.textContent;
 }
@@ -58,7 +62,7 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileSubtitle.textContent = profileSubtitleInput.value;
-  closeModal();
+  closeModal(profileEditModal);
 }
 
 /**
@@ -77,15 +81,22 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
-function openEditProfileModal(evt) {
-  evt.preventDefault();
-  fillProfileForm()
-  openModal()
-}
+// function openEditProfileModal(evt) {
+//   evt.preventDefault();
+//   fillProfileForm();
+//   openModal();
+// }
 
 /** listens to event and handles it */
-editButton.addEventListener("click", openEditProfileModal);
-profileModalcloseButton.addEventListener("click", closeModal);
+editButton.addEventListener("click", () => {
+  fillProfileForm();
+  openModal(profileEditModal);
+});
+addCardButton.addEventListener("click", () => openModal(cardAddModal));
+profileModalcloseButton.addEventListener("click", () => {
+  closeModal(profileEditModal);
+});
+cardModalcloseButton.addEventListener("click", () => closeModal(cardAddModal));
 profileEditForm.addEventListener("submit", handleProfileFormSubmit);
 
 /** iterates through cards, gets card elemens and addes them to the HTML */
