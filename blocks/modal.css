@@ -101,11 +101,19 @@
     max-width: 282px;
     padding: 22px 25px;
   }
+  .modal__image_size {
+    max-width: 75vw;
+    max-height: 75vh;
+    padding: 0;
+  }
   .modal__close {
     right: 0;
     width: 26px;
     height: 26px;
     top: -40px;
+  }
+  .modal__close_position{
+    right: -40px;
   }
   .modal__form {
     padding-top: 75px;
