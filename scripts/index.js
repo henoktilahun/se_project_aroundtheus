@@ -44,6 +44,11 @@ const cardTemplate =
 const cardTitleInput = document.querySelector("#card-title-input");
 const cardUrlInput = document.querySelector("#card-link-input");
 
+const cardImageModal = document.querySelector("#card-image-modal");
+const cardImageModalImg = cardImageModal.querySelector(".card__image-modal");
+const cardImageModalText = cardImageModal.querySelector(".modal__description");
+const cardImageModalcloseButton = cardImageModal.querySelector(".modal__close");
+
 /** function to close modal*/
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
@@ -100,18 +105,25 @@ function getCardElement(cardData) {
     cardElement.remove();
   });
 
+  cardImageElement.addEventListener("click", () => {
+    openModal(cardImageModal);
+    cardImageModalImg.src = cardData.link;
+    cardImageModalImg.alt = cardData.name;
+    cardImageModalText.textContent = cardData.name;
+  });
+
+  cardImageModalcloseButton.addEventListener("click", () => {
+    closeModal(cardImageModal);
+  });
+  // on click open card image modal
+  // use openmodal to open image
+
   cardImageElement.src = cardData.link;
   cardImageElement.alt = cardData.name;
   cardTitleElement.textContent = cardData.name;
 
   return cardElement;
 }
-
-// function openEditProfileModal(evt) {
-//   evt.preventDefault();
-//   fillProfileForm();
-//   openModal();
-// }
 
 /** listens to event and handles it */
 editButton.addEventListener("click", () => {
@@ -128,10 +140,3 @@ cardAddForm.addEventListener("submit", handleAddCardFormSubmit);
 
 /** iterates through cards, gets card elemens and addes them to the HTML */
 initialCards.forEach((cardData) => renderCard(cardData, cardListElement));
-
-// const likeButtons = document.querySelectorAll(".card__like-button");
-// likeButtons.forEach((likeButton) => {
-//   likeButton.addEventListener("click", () => {
-//     likeButton.classList.toggle("card__like-button_active");
-//   });
-// });
