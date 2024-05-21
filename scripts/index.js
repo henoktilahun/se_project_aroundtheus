@@ -49,17 +49,20 @@ const closeButtons = document.querySelectorAll(".modal__close");
 /** function to close modal*/
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", closeModalByEscape);
+  modal.removeEventListener("mousedown", closeModalOnRemoteClick)
 }
 
 /** function to open modal */
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown", closeModalByEscape);
+  modal.addEventListener("mousedown", closeModalOnRemoteClick)
 }
 
 function renderCard(cardData, wrapper) {
   const cardElement = getCardElement(cardData);
   wrapper.prepend(cardElement);
-  //wrapper.append(cardElement);
 }
 
 function fillProfileForm() {
@@ -82,6 +85,19 @@ function handleAddCardFormSubmit(evt) {
   renderCard({ name, link }, cardListElement);
   closeModal(cardAddModal);
   evt.target.reset();
+}
+
+function closeModalByEscape(evt) {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_opened");
+    closeModal(openedModal);
+  }
+}
+
+function closeModalOnRemoteClick(evt) {
+  if (evt.target === evt.currentTarget) { 
+    closeModal(evt.currentTarget)
+   }
 }
 
 /**
@@ -134,19 +150,3 @@ cardAddForm.addEventListener("submit", handleAddCardFormSubmit);
 
 /** iterates through cards, gets card elemens and addes them to the HTML */
 initialCards.forEach((cardData) => renderCard(cardData, cardListElement));
-
-/** handle closing modal when esc key is pressed */
-document.addEventListener("keydown", (evt) => {
-  const openedModal = document.querySelectorAll(".modal_opened");
-  if (evt.key === "Escape" && openedModal.length > 0) {
-    closeModal(openedModal[0]);
-  }
-});
-
-/** handle closing modal when clicking outside of modal */
-document.addEventListener("click", (evt) => {
-  const openedModal = document.querySelectorAll(".modal_opened");
-  if (evt.target.classList.contains("modal_opened")) {
-    closeModal(openedModal[0]);
-  }
-});
