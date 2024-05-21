@@ -134,3 +134,19 @@ cardAddForm.addEventListener("submit", handleAddCardFormSubmit);
 
 /** iterates through cards, gets card elemens and addes them to the HTML */
 initialCards.forEach((cardData) => renderCard(cardData, cardListElement));
+
+/** handle closing modal when esc key is pressed */
+document.addEventListener("keydown", (evt) => {
+  const openedModal = document.querySelectorAll(".modal_opened");
+  if (evt.key === "Escape" && openedModal.length > 0) {
+    closeModal(openedModal[0]);
+  }
+});
+
+/** handle closing modal when clicking outside of modal */
+document.addEventListener("click", (evt) => {
+  const openedModal = document.querySelectorAll(".modal_opened");
+  if (evt.target.classList.contains("modal_opened")) {
+    closeModal(openedModal[0]);
+  }
+});
