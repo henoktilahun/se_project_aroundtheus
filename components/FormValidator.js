@@ -43,8 +43,8 @@ export default class FormValidator {
   }
 
   toggleButtonState() {
-    this._foundInvalid = this._checkFormValidity(this._inputElements);
-    if (this._foundInvalid) {
+    const foundInvalid = this._checkFormValidity(this._inputElements);
+    if (foundInvalid) {
       this._submitButton.classList.add(this._inactiveButtonClass);
       this._submitButton.disabled = true;
       return;

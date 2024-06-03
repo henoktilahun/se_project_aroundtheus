@@ -62,11 +62,11 @@ function openModal(modal) {
 }
 
 function renderCard(cardData, wrapper) {
-  const cardElement = addCard(cardData);
+  const cardElement = createCard(cardData);
   wrapper.prepend(cardElement);
 }
 
-function addCard(cardData) {
+function createCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick);
   return card.generateCard();
 }
