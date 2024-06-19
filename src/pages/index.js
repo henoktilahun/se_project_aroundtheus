@@ -21,7 +21,8 @@ const CardSection = new Section(
       CardSection.addItems(cardElement.generateCard());
     },
   },
-  //console.log(elementSelector.cardSection),
+  //   console.log('elementselector.cardsection:')
+  //   console.log(elementSelector.cardSection),
   elementSelector.cardSection
 );
 

@@ -27,6 +27,6 @@ export const initialCards = [
 
 export const elementSelector = {
   cardSection: "cards__list",
-  //cardTemplate: "card_template",
+  //cardTemplate: "card__template",
   cardTemplate: "#card-template",
 };

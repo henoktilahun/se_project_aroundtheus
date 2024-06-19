@@ -24,7 +24,9 @@ export default class Section {
 
   addItems(item) {
     //take itm and render it into this._element
-    console.log(this._element);
+    console.log("item:");
+    console.log(item);
+    console.log(`this element: ${this._element}`);
     this._element.append(item);
   }
 }
