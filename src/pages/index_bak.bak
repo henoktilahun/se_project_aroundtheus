@@ -2,32 +2,32 @@ import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import "./index.css";
 
-const initialCards = [
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-  },
-  {
-    name: "Vanoise national Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-  },
-  {
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-  },
-  {
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-  },
-];
+// const initialCards = [
+//   {
+//     name: "Lago di Braies",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
+//   },
+//   {
+//     name: "Vanoise national Park",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
+//   },
+//   {
+//     name: "Latemar",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
+//   },
+//   {
+//     name: "Bald Mountains",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
+//   },
+//   {
+//     name: "Lake Louise",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
+//   },
+//   {
+//     name: "Yosemite Valley",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+//   },
+// ];
 
 //Get all elements needed
 const editButton = document.querySelector("#profile-edit-button");
@@ -49,18 +49,18 @@ const cardImageModalImg = cardImageModal.querySelector(".card__image-modal");
 const cardImageModalText = cardImageModal.querySelector(".modal__description");
 
 /** function to close modal*/
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", closeModalByEscape);
-  modal.removeEventListener("mousedown", closeModalOnRemoteClick);
-}
+// function closeModal(modal) {
+//   modal.classList.remove("modal_opened");
+//   document.removeEventListener("keydown", closeModalByEscape);
+//   modal.removeEventListener("mousedown", closeModalOnRemoteClick);
+// }
 
-/** function to open modal */
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keydown", closeModalByEscape);
-  modal.addEventListener("mousedown", closeModalOnRemoteClick);
-}
+// /** function to open modal */
+// function openModal(modal) {
+//   modal.classList.add("modal_opened");
+//   document.addEventListener("keydown", closeModalByEscape);
+//   modal.addEventListener("mousedown", closeModalOnRemoteClick);
+// }
 
 function renderCard(cardData, wrapper) {
   const cardElement = createCard(cardData);
@@ -95,25 +95,25 @@ function handleAddCardFormSubmit(evt) {
   addFormValidator.toggleButtonState();
 }
 
-function closeModalByEscape(evt) {
-  if (evt.key === "Escape") {
-    const openedModal = document.querySelector(".modal_opened");
-    closeModal(openedModal);
-  }
-}
+// function closeModalByEscape(evt) {
+//   if (evt.key === "Escape") {
+//     const openedModal = document.querySelector(".modal_opened");
+//     closeModal(openedModal);
+//   }
+// }
 
-function closeModalOnRemoteClick(evt) {
-  if (evt.target === evt.currentTarget) {
-    closeModal(evt.currentTarget);
-  }
-}
+// function closeModalOnRemoteClick(evt) {
+//   if (evt.target === evt.currentTarget) {
+//     closeModal(evt.currentTarget);
+//   }
+// }
 
-function handleImageClick(cardData) {
-  cardImageModalImg.src = cardData.link;
-  cardImageModalImg.alt = cardData.name;
-  cardImageModalText.textContent = cardData.name;
-  openModal(cardImageModal);
-}
+// function handleImageClick(cardData) {
+//   cardImageModalImg.src = cardData.link;
+//   cardImageModalImg.alt = cardData.name;
+//   cardImageModalText.textContent = cardData.name;
+//   openModal(cardImageModal);
+// }
 
 /** listens to event and handles it */
 editButton.addEventListener("click", () => {

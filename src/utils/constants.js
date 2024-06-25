@@ -26,7 +26,9 @@ export const initialCards = [
 ];
 
 export const elementSelector = {
-  cardSection: "cards__list",
-  //cardTemplate: "card__template",
+  cardSection: ".cards__list",
   cardTemplate: "#card-template",
+  previewImagePopup: "#card-image-modal",
+  previewAddFormPopup: "#profile-add-modal",
+  previewProfileFormPopup: "#profile-edit-modal",
 };
