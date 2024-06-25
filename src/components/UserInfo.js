@@ -16,7 +16,7 @@ export default class UserInfo {
       this._nameElement.textContent = cardData.title;
     }
     if (this._jobElement) {
-      this._jobElement.textContent = cardData.description;
+      this._jobElement.textContent = cardData.subtitle;
     }
   }
 }

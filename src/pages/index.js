@@ -15,14 +15,9 @@ import UserInfo from "../components/UserInfo.js";
 
 const editButton = document.querySelector("#profile-edit-button");
 const addCardButton = document.querySelector("#profile-add-button");
-// const cardAddModal = document.querySelector("#profile-add-modal");
-// const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileTitleInput = document.querySelector("#profile-title-input");
 const profileSubtitleInput = document.querySelector("#profile-subtitle-input");
-//const cardAddForm = cardAddModal.querySelector(".modal__form");
-const cardAddForm = document.forms["card-form"]
-//const profileEditForm = profileEditModal.querySelector(".modal__form");
-const profileEditForm = document.forms["profile-form"]
+const cardAddForm = document.forms["card-form"];
 
 /* Create class instances */
 const cardImagePopup = new PopupWithImage(elementSelector.previewImagePopup);
@@ -57,18 +52,8 @@ profileEditFormPopup.setEventListeners();
 
 /* Functions for handling card creations and form submits */
 function createCard(cardData) {
-  //   const cardElement = new Card(
-  //   {
-  //     cardData,
-  //     handleImageClick: (item) => {
-  //       cardImagePopup.open(item);
-  //     },
-  //   },
-  //   elementSelector.cardTemplate
-  // );
-  const cardElement = getCard(cardData)
-  cardSection.addItems(cardElement)
-  //cardSection.addItems(cardElement.generateCard());
+  const cardElement = getCard(cardData);
+  cardSection.addItems(cardElement);
 }
 
 function getCard(cardData) {
@@ -81,7 +66,7 @@ function getCard(cardData) {
     },
     elementSelector.cardTemplate
   );
-  return cardElement.generateCard()
+  return cardElement.generateCard();
 }
 
 function handleProfileFormSubmit(userData) {
@@ -90,12 +75,11 @@ function handleProfileFormSubmit(userData) {
 }
 
 function handleAddCardFormSubmit(cardData) {
-  const name = cardData.name;
+  const name = cardData.title;
   const link = cardData.link;
   createCard({ name, link });
   cardAddFormPopup.close();
   cardAddForm.reset();
-  addFormValidator.toggleButtonState();
 }
 
 /** listens to event and handles it */
@@ -104,13 +88,27 @@ editButton.addEventListener("click", () => {
   const userData = userInfo.getUserInfo();
   profileTitleInput.value = userData.title;
   profileSubtitleInput.value = userData.description;
-  editFormValidator.toggleButtonState();
+  formValidators["profile-form"].toggleButtonState();
 });
-addCardButton.addEventListener("click", () => cardAddFormPopup.open());
+addCardButton.addEventListener("click", () => {
+  cardAddFormPopup.open();
+  formValidators["card-form"].toggleButtonState();
+});
 
 /** VALIDATION */
-const editFormValidator = new FormValidator(validationConfig, profileEditForm);
-const addFormValidator = new FormValidator(validationConfig, cardAddForm);
+const formValidators = {};
 
-addFormValidator.enableValidation(validationConfig);
-editFormValidator.enableValidation(validationConfig);
+const enableValidation = (validationConfig) => {
+  const formList = Array.from(
+    document.querySelectorAll(validationConfig.formSelector)
+  );
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(validationConfig, formElement);
+    const formId = formElement.getAttribute("id");
+
+    formValidators[formId] = validator;
+    validator.enableValidation();
+  });
+};
+
+enableValidation(validationConfig);
