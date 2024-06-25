@@ -5,16 +5,13 @@ export default class Section {
     this._element = document.querySelector(elementSelector);
   }
 
-  renderItems(items) {
-    //use this._renderer to render the data into this._element
-    //this.clear();
+  renderItems() {
     this._renderedItems.forEach((item) => {
       this._renderer(item);
     });
   }
 
   addItems(item) {
-    //take itm and render it into this._element
     this._element.append(item);
   }
 }
