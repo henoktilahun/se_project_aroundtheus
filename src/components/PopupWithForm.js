@@ -26,8 +26,4 @@ export default class PopupWithForm extends Popup {
       evt.target.reset();
     });
   }
-
-  close() {
-    super.close();
-  }
 }
