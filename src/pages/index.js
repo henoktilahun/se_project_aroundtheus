@@ -5,13 +5,14 @@ import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
 import {
-  initialCards,
+  //   initialCards,
   validationConfig,
   elementSelector,
 } from "../utils/constants.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
+import Api from "../components/Api.js";
 
 const editButton = document.querySelector("#profile-edit-button");
 const addCardButton = document.querySelector("#profile-add-button");
@@ -20,10 +21,20 @@ const profileSubtitleInput = document.querySelector("#profile-subtitle-input");
 const cardAddForm = document.forms["card-form"];
 
 /* Create class instances */
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "c8734e87-d2e1-4745-a6e7-7e6331a1aed2",
+    "Content-Type": "application/json",
+  },
+});
+
+//api.getInitialCards().then((res) => console.log(res));
+//api.deleteCard("668b548a8bacc8001afade41").then((res) => console.log(res));
+
 const cardImagePopup = new PopupWithImage(elementSelector.previewImagePopup);
 const cardSection = new Section(
   {
-    items: initialCards,
     renderer: createCard,
   },
   elementSelector.cardSection
@@ -44,8 +55,15 @@ const userInfo = new UserInfo(
   elementSelector.profileDescription
 );
 
+api.getUserInfo().then((userData) => {
+  userInfo.setUserInfo(userData);
+});
+
 /* Initialize all instances */
-cardSection.renderItems();
+api.getInitialCards().then((cards) => {
+  cardSection.renderItems(cards);
+});
+
 cardImagePopup.setEventListeners();
 cardAddFormPopup.setEventListeners();
 profileEditFormPopup.setEventListeners();
@@ -75,11 +93,13 @@ function handleProfileFormSubmit(userData) {
 }
 
 function handleAddCardFormSubmit(cardData) {
-  const name = cardData.title;
-  const link = cardData.link;
-  createCard({ name, link });
-  cardAddFormPopup.close();
-  cardAddForm.reset();
+  api.addCard(cardData).then((cardData) => {
+    const name = cardData.name;
+    const link = cardData.link;
+    createCard({ name, link });
+    cardAddFormPopup.close();
+    cardAddForm.reset();
+  });
 }
 
 /** listens to event and handles it */

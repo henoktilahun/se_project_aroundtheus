@@ -11,12 +11,20 @@ export default class UserInfo {
     };
   }
 
+  // setUserInfo(cardData) {
+  //   if (this._nameElement) {
+  //     this._nameElement.textContent = cardData.title;
+  //   }
+  //   if (this._jobElement) {
+  //     this._jobElement.textContent = cardData.subtitle;
+  //   }
+  // }
   setUserInfo(cardData) {
     if (this._nameElement) {
-      this._nameElement.textContent = cardData.title;
+      this._nameElement.textContent = cardData.name;
     }
     if (this._jobElement) {
-      this._jobElement.textContent = cardData.subtitle;
+      this._jobElement.textContent = cardData.about;
     }
   }
 }
