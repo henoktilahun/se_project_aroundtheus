@@ -55,14 +55,24 @@ const userInfo = new UserInfo(
   elementSelector.profileDescription
 );
 
-api.getUserInfo().then((userData) => {
-  userInfo.setUserInfo(userData);
-});
+api
+  .getUserInfo()
+  .then((userData) => {
+    userInfo.setUserInfo(userData);
+  })
+  .catch((err) => {
+    console.error(err); // log the error to the console
+  });
 
 /* Initialize all instances */
-api.getInitialCards().then((cards) => {
-  cardSection.renderItems(cards);
-});
+api
+  .getInitialCards()
+  .then((cards) => {
+    cardSection.renderItems(cards);
+  })
+  .catch((err) => {
+    console.error(err); // log the error to the console
+  });
 
 cardImagePopup.setEventListeners();
 cardAddFormPopup.setEventListeners();
@@ -82,9 +92,14 @@ function getCard(cardData) {
         cardImagePopup.open(item);
       },
       handleDeleteCardClick: () => {
-        api.deleteCard(cardElement.getCardId()).then((res) => {
-          cardElement.handleDeleteButton();
-        });
+        api
+          .deleteCard(cardElement.getCardId())
+          .then((res) => {
+            cardElement.handleDeleteButton();
+          })
+          .catch((err) => {
+            console.error(err); // log the error to the console
+          });
       },
     },
     elementSelector.cardTemplate
@@ -103,13 +118,18 @@ function handleProfileFormSubmit(userData) {
 }
 
 function handleAddCardFormSubmit(cardData) {
-  api.addCard(cardData).then((cardData) => {
-    const name = cardData.name;
-    const link = cardData.link;
-    createCard({ name, link });
-    cardAddFormPopup.close();
-    cardAddForm.reset();
-  });
+  api
+    .addCard(cardData)
+    .then((cardData) => {
+      const name = cardData.name;
+      const link = cardData.link;
+      createCard({ name, link });
+      cardAddFormPopup.close();
+      cardAddForm.reset();
+    })
+    .catch((err) => {
+      console.error(err); // log the error to the console
+    });
 }
 
 /** listens to event and handles it */

@@ -15,35 +15,14 @@ export default class Api {
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
-    })
-      .then((res) => {
-        this._handleResponse(res);
-        // if (res.ok) {
-        //   return res.json();
-        // }
-        // // if the server returns an error, reject the promise
-        // return Promise.reject(`Error: ${res.status}`);
-      })
-      .catch((err) => {
-        console.error(err); // log the error to the console
-      });
+    }).then(this._handleResponse);
   }
   //GET https://around-api.en.tripleten-services.com/v1/users/me
 
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        // if the server returns an error, reject the promise
-        return Promise.reject(`Error: ${res.status}`);
-      })
-      .catch((err) => {
-        console.error(err); // log the error to the console
-      });
+    }).then(this._handleResponse);
   }
 
   //PATCH https://around-api.en.tripleten-services.com/v1/users/me
@@ -60,17 +39,7 @@ export default class Api {
         name,
         link,
       }),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        // if the server returns an error, reject the promise
-        return Promise.reject(`Error: ${res.status}`);
-      })
-      .catch((err) => {
-        console.error(err); // log the error to the console
-      });
+    }).then(this._handleResponse);
   }
 
   //DELETE https://around-api.en.tripleten-services.com/v1/cards/cardId
@@ -78,17 +47,7 @@ export default class Api {
     return fetch(`${this._baseUrl}/cards/${cardID}`, {
       method: "DELETE",
       headers: this._headers,
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        // if the server returns an error, reject the promise
-        return Promise.reject(`Error: ${res.status}`);
-      })
-      .catch((err) => {
-        console.error(err); // log the error to the console
-      });
+    }).then(this._handleResponse);
   }
 
   //PUT https://around-api.en.tripleten-services.com/v1/cards/cardId/likes
