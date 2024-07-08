@@ -81,11 +81,21 @@ function getCard(cardData) {
       handleImageClick: (item) => {
         cardImagePopup.open(item);
       },
+      handleDeleteCardClick: () => {
+        api.deleteCard(cardElement.getCardId()).then((res) => {
+          cardElement.handleDeleteButton();
+        });
+      },
     },
     elementSelector.cardTemplate
   );
   return cardElement.generateCard();
 }
+
+// function handleDeleteCardClick() {
+//   console.log("delete buton clicked");
+//   //api.deleteCard("668b548a8bacc8001afade41").then((res) => console.log(res));
+// }
 
 function handleProfileFormSubmit(userData) {
   userInfo.setUserInfo(userData);
