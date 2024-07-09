@@ -51,10 +51,20 @@ export default class Api {
   }
 
   //PUT https://around-api.en.tripleten-services.com/v1/cards/cardId/likes
-  addLike() {}
+  addLike(cardID) {
+    return fetch(`${this._baseUrl}/cards/${cardID}/likes`, {
+      method: "PUT",
+      headers: this._headers,
+    }).then(this._handleResponse);
+  }
 
   //DELETE https://around-api.en.tripleten-services.com/v1/cards/cardId/likes
-  removeLike() {}
+  removeLike(cardID) {
+    return fetch(`${this._baseUrl}/cards/${cardID}/likes`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then(this._handleResponse);
+  }
 
   //PATCH https://around-api.en.tripleten-services.com/v1/users/me/avatar
   updateAvatar() {}

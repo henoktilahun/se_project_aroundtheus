@@ -101,16 +101,56 @@ function getCard(cardData) {
             console.error(err); // log the error to the console
           });
       },
+      handleLikeCardClick: () => {
+        console.log(cardElement.isLiked);
+        if (cardElement.isLiked) {
+          api
+            .removeLike(cardElement.getCardId())
+            .then((res) => {
+              cardElement.handleLikeButton(res.isLiked);
+            })
+            .catch((err) => {
+              console.error(err); // log the error to the console
+            });
+        } else {
+          api
+            .addLike(cardElement.getCardId())
+            .then((res) => {
+              cardElement.handleLikeButton(res.isLiked);
+            })
+            .catch((err) => {
+              console.error(err); // log the error to the console
+            });
+        }
+      },
     },
     elementSelector.cardTemplate
   );
   return cardElement.generateCard();
 }
 
-// function handleDeleteCardClick() {
-//   console.log("delete buton clicked");
-//   //api.deleteCard("668b548a8bacc8001afade41").then((res) => console.log(res));
+// function handleDeleteCardClick(cardData) {
+//   console.log(cardData.name);
+//   api
+//     .deleteCard(cardData._id)
+//     .then((res) => {
+//       cardData.handleDeleteButton();
+//     })
+//     .catch((err) => {
+//       console.error(err); // log the error to the console
+//     });
 // }
+
+// : () => {
+//     api
+//       .deleteCard(cardElement.getCardId())
+//       .then((res) => {
+//         cardElement.handleDeleteButton();
+//       })
+//       .catch((err) => {
+//         console.error(err); // log the error to the console
+//       });
+//   }
 
 function handleProfileFormSubmit(userData) {
   userInfo.setUserInfo(userData);
