@@ -40,6 +40,7 @@ export const elementSelector = {
   previewImagePopup: "#card-image-modal",
   previewAddFormPopup: "#profile-add-modal",
   previewProfileFormPopup: "#profile-edit-modal",
+  previewAvatarFormPopup: "#avatar-edit-modal",
   profileTitle: ".profile__title",
   profileDescription: ".profile__subtitle",
 };

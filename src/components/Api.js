@@ -27,7 +27,16 @@ export default class Api {
 
   //PATCH https://around-api.en.tripleten-services.com/v1/users/me
 
-  editProfile() {}
+  editProfile({ name, about }) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        name,
+        about,
+      }),
+    }).then(this._handleResponse);
+  }
 
   //POST https://around-api.en.tripleten-services.com/v1/cards
 

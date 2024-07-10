@@ -16,6 +16,7 @@ import Api from "../components/Api.js";
 
 const editButton = document.querySelector("#profile-edit-button");
 const addCardButton = document.querySelector("#profile-add-button");
+const editAvatarButton = document.querySelector("#profile-avatar-button");
 const profileTitleInput = document.querySelector("#profile-title-input");
 const profileSubtitleInput = document.querySelector("#profile-subtitle-input");
 const cardAddForm = document.forms["card-form"];
@@ -43,6 +44,11 @@ const cardSection = new Section(
 const cardAddFormPopup = new PopupWithForm(
   elementSelector.previewAddFormPopup,
   handleAddCardFormSubmit
+);
+
+const editAvatarPopup = new PopupWithForm(
+  elementSelector.previewAvatarFormPopup
+  // handleAddCardFormSubmit
 );
 
 const profileEditFormPopup = new PopupWithForm(
@@ -102,7 +108,6 @@ function getCard(cardData) {
           });
       },
       handleLikeCardClick: () => {
-        console.log(cardElement.isLiked);
         if (cardElement.isLiked) {
           api
             .removeLike(cardElement.getCardId())
@@ -129,32 +134,16 @@ function getCard(cardData) {
   return cardElement.generateCard();
 }
 
-// function handleDeleteCardClick(cardData) {
-//   console.log(cardData.name);
-//   api
-//     .deleteCard(cardData._id)
-//     .then((res) => {
-//       cardData.handleDeleteButton();
-//     })
-//     .catch((err) => {
-//       console.error(err); // log the error to the console
-//     });
-// }
-
-// : () => {
-//     api
-//       .deleteCard(cardElement.getCardId())
-//       .then((res) => {
-//         cardElement.handleDeleteButton();
-//       })
-//       .catch((err) => {
-//         console.error(err); // log the error to the console
-//       });
-//   }
-
 function handleProfileFormSubmit(userData) {
-  userInfo.setUserInfo(userData);
-  profileEditFormPopup.close();
+  api
+    .editProfile(userData)
+    .then((userData) => {
+      userInfo.setUserInfo(userData);
+      profileEditFormPopup.close();
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 }
 
 function handleAddCardFormSubmit(cardData) {
@@ -182,6 +171,10 @@ editButton.addEventListener("click", () => {
 });
 addCardButton.addEventListener("click", () => {
   cardAddFormPopup.open();
+  formValidators["card-form"].toggleButtonState();
+});
+editAvatarButton.addEventListener("click", () => {
+  editAvatarPopup.open();
   formValidators["card-form"].toggleButtonState();
 });
 

@@ -71,6 +71,24 @@
   cursor: pointer;
 }
 
+.profile__avatar-button {
+  background: transparent url(../images/edit_avatar.svg) no-repeat center;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: none;
+  padding: 0;
+  grid-area: button;
+  height: 120px;
+  width: 120px;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.profile__avatar-button:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 775px) {
   .profile__info {
     padding-left: 10px;
