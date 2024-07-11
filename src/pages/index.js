@@ -61,6 +61,17 @@ const userInfo = new UserInfo(
   elementSelector.profileDescription
 );
 
+const cardDeleteConfirmation = new PopupWithForm(
+  // elementSelector.profileTitle,
+  // elementSelector.profileDescription
+  elementSelector.cardDeleteConfirmPopup
+);
+
+cardImagePopup.setEventListeners();
+cardAddFormPopup.setEventListeners();
+profileEditFormPopup.setEventListeners();
+cardDeleteConfirmation.setEventListeners();
+
 api
   .getUserInfo()
   .then((userData) => {
@@ -80,10 +91,6 @@ api
     console.error(err); // log the error to the console
   });
 
-cardImagePopup.setEventListeners();
-cardAddFormPopup.setEventListeners();
-profileEditFormPopup.setEventListeners();
-
 /* Functions for handling card creations and form submits */
 function createCard(cardData) {
   const cardElement = getCard(cardData);
@@ -98,14 +105,18 @@ function getCard(cardData) {
         cardImagePopup.open(item);
       },
       handleDeleteCardClick: () => {
-        api
-          .deleteCard(cardElement.getCardId())
-          .then((res) => {
-            cardElement.handleDeleteButton();
-          })
-          .catch((err) => {
-            console.error(err); // log the error to the console
-          });
+        cardDeleteConfirmation.open();
+        cardDeleteConfirmation.handleDeleteCardConfirmation(() => {
+          api
+            .deleteCard(cardElement.getCardId())
+            .then((res) => {
+              cardElement.handleDeleteButton();
+              cardDeleteConfirmation.close();
+            })
+            .catch((err) => {
+              console.error(err); // log the error to the console
+            });
+        });
       },
       handleLikeCardClick: () => {
         if (cardElement.isLiked) {
@@ -175,7 +186,7 @@ addCardButton.addEventListener("click", () => {
 });
 editAvatarButton.addEventListener("click", () => {
   editAvatarPopup.open();
-  formValidators["card-form"].toggleButtonState();
+  // formValidators["card-form"].toggleButtonState();
 });
 
 /** VALIDATION */

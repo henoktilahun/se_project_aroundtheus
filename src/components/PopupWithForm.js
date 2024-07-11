@@ -17,6 +17,10 @@ export default class PopupWithForm extends Popup {
     return formInputs;
   }
 
+  handleDeleteCardConfirmation(handleDeleteCardSubmit) {
+    this._handleFormSubmit = handleDeleteCardSubmit;
+  }
+
   setEventListeners() {
     super.setEventListeners();
     this._popupForm.addEventListener("submit", (evt) => {
