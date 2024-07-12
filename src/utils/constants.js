@@ -16,5 +16,6 @@ export const elementSelector = {
   previewAvatarFormPopup: "#avatar-edit-modal",
   profileTitle: ".profile__title",
   profileDescription: ".profile__subtitle",
+  avatarImage: ".profile__image",
   cardDeleteConfirmPopup: "#delete-card-modal",
 };

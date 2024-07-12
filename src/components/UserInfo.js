@@ -1,7 +1,8 @@
 export default class UserInfo {
-  constructor(nameSelector, jobSelector) {
+  constructor(nameSelector, jobSelector, avatarSelector) {
     this._nameElement = document.querySelector(nameSelector);
     this._jobElement = document.querySelector(jobSelector);
+    this._avatarElement = document.querySelector(avatarSelector);
   }
 
   getUserInfo() {
@@ -11,20 +12,18 @@ export default class UserInfo {
     };
   }
 
-  // setUserInfo(cardData) {
-  //   if (this._nameElement) {
-  //     this._nameElement.textContent = cardData.title;
-  //   }
-  //   if (this._jobElement) {
-  //     this._jobElement.textContent = cardData.subtitle;
-  //   }
-  // }
   setUserInfo(cardData) {
     if (this._nameElement) {
       this._nameElement.textContent = cardData.name;
     }
     if (this._jobElement) {
       this._jobElement.textContent = cardData.about;
+    }
+    if (this._avatarElement) {
+      console.log(" IN THIS AVATAR");
+      console.log(cardData.avatar);
+      console.log(this._avatarElement);
+      this._avatarElement.src = cardData.avatar;
     }
   }
 }

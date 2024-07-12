@@ -47,8 +47,8 @@ const cardAddFormPopup = new PopupWithForm(
 );
 
 const editAvatarPopup = new PopupWithForm(
-  elementSelector.previewAvatarFormPopup
-  // handleAddCardFormSubmit
+  elementSelector.previewAvatarFormPopup,
+  handleUpdateAvatarFormSubmit
 );
 
 const profileEditFormPopup = new PopupWithForm(
@@ -58,18 +58,18 @@ const profileEditFormPopup = new PopupWithForm(
 
 const userInfo = new UserInfo(
   elementSelector.profileTitle,
-  elementSelector.profileDescription
+  elementSelector.profileDescription,
+  elementSelector.avatarImage
 );
 
 const cardDeleteConfirmation = new PopupWithForm(
-  // elementSelector.profileTitle,
-  // elementSelector.profileDescription
   elementSelector.cardDeleteConfirmPopup
 );
 
 cardImagePopup.setEventListeners();
 cardAddFormPopup.setEventListeners();
 profileEditFormPopup.setEventListeners();
+editAvatarPopup.setEventListeners();
 cardDeleteConfirmation.setEventListeners();
 
 api
@@ -166,6 +166,21 @@ function handleAddCardFormSubmit(cardData) {
       createCard({ name, link });
       cardAddFormPopup.close();
       cardAddForm.reset();
+    })
+    .catch((err) => {
+      console.error(err); // log the error to the console
+    });
+}
+
+function handleUpdateAvatarFormSubmit(avatar) {
+  console.log(avatar);
+  api
+    .updateAvatar(avatar.name)
+    .then((data) => {
+      console.log(avatar);
+      console.log(data);
+      userInfo.setUserInfo(data);
+      editAvatarPopup.close();
     })
     .catch((err) => {
       console.error(err); // log the error to the console

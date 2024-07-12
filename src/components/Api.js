@@ -76,5 +76,13 @@ export default class Api {
   }
 
   //PATCH https://around-api.en.tripleten-services.com/v1/users/me/avatar
-  updateAvatar() {}
+  updateAvatar(avatar) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar,
+      }),
+    }).then(this._handleResponse);
+  }
 }
