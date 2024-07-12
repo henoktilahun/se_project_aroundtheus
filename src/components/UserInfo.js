@@ -20,9 +20,6 @@ export default class UserInfo {
       this._jobElement.textContent = cardData.about;
     }
     if (this._avatarElement) {
-      console.log(" IN THIS AVATAR");
-      console.log(cardData.avatar);
-      console.log(this._avatarElement);
       this._avatarElement.src = cardData.avatar;
     }
   }

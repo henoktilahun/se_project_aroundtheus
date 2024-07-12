@@ -30,9 +30,6 @@ const api = new Api({
   },
 });
 
-//api.getInitialCards().then((res) => console.log(res));
-//api.deleteCard("668b548a8bacc8001afade41").then((res) => console.log(res));
-
 const cardImagePopup = new PopupWithImage(elementSelector.previewImagePopup);
 const cardSection = new Section(
   {
@@ -173,12 +170,9 @@ function handleAddCardFormSubmit(cardData) {
 }
 
 function handleUpdateAvatarFormSubmit(avatar) {
-  console.log(avatar);
   api
     .updateAvatar(avatar.name)
     .then((data) => {
-      console.log(avatar);
-      console.log(data);
       userInfo.setUserInfo(data);
       editAvatarPopup.close();
     })
