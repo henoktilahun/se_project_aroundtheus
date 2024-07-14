@@ -163,7 +163,7 @@ function handleProfileFormSubmit(userData) {
 }
 
 function handleAddCardFormSubmit(cardData) {
-  profileEditFormPopup.renderSaving(true);
+  cardAddFormPopup.renderSaving(true);
   api
     .addCard(cardData)
     .then((cardData) => {
@@ -178,12 +178,12 @@ function handleAddCardFormSubmit(cardData) {
       console.error(err); // log the error to the console
     })
     .finally(() => {
-      profileEditFormPopup.renderSaving(false);
+      cardAddFormPopup.renderSaving(false);
     });
 }
 
 function handleUpdateAvatarFormSubmit(avatar) {
-  profileEditFormPopup.renderSaving(true);
+  editAvatarPopup.renderSaving(true);
   api
     .updateAvatar(avatar.name)
     .then((data) => {
@@ -194,7 +194,7 @@ function handleUpdateAvatarFormSubmit(avatar) {
       console.error(err); // log the error to the console
     })
     .finally(() => {
-      profileEditFormPopup.renderSaving(false);
+      editAvatarPopup.renderSaving(false);
     });
 }
 
