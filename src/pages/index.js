@@ -101,45 +101,49 @@ function getCard(cardData) {
       handleImageClick: (item) => {
         cardImagePopup.open(item);
       },
-      handleDeleteCardClick: () => {
-        cardDeleteConfirmation.open();
-        cardDeleteConfirmation.handleDeleteCardConfirmation(() => {
-          api
-            .deleteCard(cardElement.getCardId())
-            .then((res) => {
-              cardElement.handleDeleteButton();
-              cardDeleteConfirmation.close();
-            })
-            .catch((err) => {
-              console.error(err); // log the error to the console
-            });
-        });
-      },
-      handleLikeCardClick: () => {
-        if (cardElement.isLiked) {
-          api
-            .removeLike(cardElement.getCardId())
-            .then((res) => {
-              cardElement.handleLikeButton(res.isLiked);
-            })
-            .catch((err) => {
-              console.error(err); // log the error to the console
-            });
-        } else {
-          api
-            .addLike(cardElement.getCardId())
-            .then((res) => {
-              cardElement.handleLikeButton(res.isLiked);
-            })
-            .catch((err) => {
-              console.error(err); // log the error to the console
-            });
-        }
-      },
     },
+    handleDeleteCardClick,
+    handleLikeCardClick,
     elementSelector.cardTemplate
   );
   return cardElement.generateCard();
+}
+
+function handleLikeCardClick(card) {
+  if (card.isLiked) {
+    api
+      .removeLike(card.getCardId())
+      .then((res) => {
+        card.handleLikeButton(res.isLiked);
+      })
+      .catch((err) => {
+        console.error(err); // log the error to the console
+      });
+  } else {
+    api
+      .addLike(card.getCardId())
+      .then((res) => {
+        card.handleLikeButton(res.isLiked);
+      })
+      .catch((err) => {
+        console.error(err); // log the error to the console
+      });
+  }
+}
+
+function handleDeleteCardClick(card) {
+  cardDeleteConfirmation.open();
+  cardDeleteConfirmation.handleDeleteCardConfirmation(() => {
+    api
+      .deleteCard(card.getCardId())
+      .then((res) => {
+        card.handleDeleteButton();
+        cardDeleteConfirmation.close();
+      })
+      .catch((err) => {
+        console.error(err); // log the error to the console
+      });
+  });
 }
 
 function handleProfileFormSubmit(userData) {
@@ -160,7 +164,8 @@ function handleAddCardFormSubmit(cardData) {
     .then((cardData) => {
       const name = cardData.name;
       const link = cardData.link;
-      createCard({ name, link });
+      const _id = cardData._id;
+      createCard({ name, link, _id });
       cardAddFormPopup.close();
       cardAddForm.reset();
     })
