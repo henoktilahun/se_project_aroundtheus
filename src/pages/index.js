@@ -147,6 +147,7 @@ function handleDeleteCardClick(card) {
 }
 
 function handleProfileFormSubmit(userData) {
+  profileEditFormPopup.renderSaving(true);
   api
     .editProfile(userData)
     .then((userData) => {
@@ -155,10 +156,14 @@ function handleProfileFormSubmit(userData) {
     })
     .catch((err) => {
       console.error(err);
+    })
+    .finally(() => {
+      profileEditFormPopup.renderSaving(false);
     });
 }
 
 function handleAddCardFormSubmit(cardData) {
+  profileEditFormPopup.renderSaving(true);
   api
     .addCard(cardData)
     .then((cardData) => {
@@ -171,10 +176,14 @@ function handleAddCardFormSubmit(cardData) {
     })
     .catch((err) => {
       console.error(err); // log the error to the console
+    })
+    .finally(() => {
+      profileEditFormPopup.renderSaving(false);
     });
 }
 
 function handleUpdateAvatarFormSubmit(avatar) {
+  profileEditFormPopup.renderSaving(true);
   api
     .updateAvatar(avatar.name)
     .then((data) => {
@@ -183,6 +192,9 @@ function handleUpdateAvatarFormSubmit(avatar) {
     })
     .catch((err) => {
       console.error(err); // log the error to the console
+    })
+    .finally(() => {
+      profileEditFormPopup.renderSaving(false);
     });
 }
 
@@ -200,7 +212,6 @@ addCardButton.addEventListener("click", () => {
 });
 editAvatarButton.addEventListener("click", () => {
   editAvatarPopup.open();
-  // formValidators["card-form"].toggleButtonState();
 });
 
 /** VALIDATION */
