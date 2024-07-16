@@ -4,6 +4,10 @@ export default class Api {
     this._headers = headers;
   }
 
+  _request(url, options) {
+    return fetch(url, options).then(this._handleResponse);
+  }
+
   _handleResponse(res) {
     if (res.ok) {
       return res.json();
@@ -13,76 +17,76 @@ export default class Api {
   }
 
   getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`, {
+    return this._request(`${this._baseUrl}/cards`, {
       headers: this._headers,
-    }).then(this._handleResponse);
+    });
   }
   //GET https://around-api.en.tripleten-services.com/v1/users/me
 
   getUserInfo() {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return this._request(`${this._baseUrl}/users/me`, {
       headers: this._headers,
-    }).then(this._handleResponse);
+    });
   }
 
   //PATCH https://around-api.en.tripleten-services.com/v1/users/me
 
   editProfile({ name, about }) {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return this._request(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
         name,
         about,
       }),
-    }).then(this._handleResponse);
+    });
   }
 
   //POST https://around-api.en.tripleten-services.com/v1/cards
 
   addCard({ name, link }) {
-    return fetch(`${this._baseUrl}/cards`, {
+    return this._request(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
         name,
         link,
       }),
-    }).then(this._handleResponse);
+    });
   }
 
   //DELETE https://around-api.en.tripleten-services.com/v1/cards/cardId
   deleteCard(cardID) {
-    return fetch(`${this._baseUrl}/cards/${cardID}`, {
+    return this._request(`${this._baseUrl}/cards/${cardID}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then(this._handleResponse);
+    });
   }
 
   //PUT https://around-api.en.tripleten-services.com/v1/cards/cardId/likes
   addLike(cardID) {
-    return fetch(`${this._baseUrl}/cards/${cardID}/likes`, {
+    return this._request(`${this._baseUrl}/cards/${cardID}/likes`, {
       method: "PUT",
       headers: this._headers,
-    }).then(this._handleResponse);
+    });
   }
 
   //DELETE https://around-api.en.tripleten-services.com/v1/cards/cardId/likes
   removeLike(cardID) {
-    return fetch(`${this._baseUrl}/cards/${cardID}/likes`, {
+    return this._request(`${this._baseUrl}/cards/${cardID}/likes`, {
       method: "DELETE",
       headers: this._headers,
-    }).then(this._handleResponse);
+    });
   }
 
   //PATCH https://around-api.en.tripleten-services.com/v1/users/me/avatar
   updateAvatar(avatar) {
-    return fetch(`${this._baseUrl}/users/me/avatar`, {
+    return this._request(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
         avatar,
       }),
-    }).then(this._handleResponse);
+    });
   }
 }

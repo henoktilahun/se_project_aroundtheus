@@ -19,8 +19,8 @@ export default class PopupWithForm extends Popup {
     return formInputs;
   }
 
-  handleDeleteCardConfirmation(handleDeleteCardSubmit) {
-    this._handleFormSubmit = handleDeleteCardSubmit;
+  setSubmitHandler(handleSubmit) {
+    this._handleFormSubmit = handleSubmit;
   }
 
   setEventListeners() {
@@ -29,7 +29,6 @@ export default class PopupWithForm extends Popup {
       evt.preventDefault();
       const inputValues = this._getInputValues();
       this._handleFormSubmit(inputValues);
-      evt.target.reset();
     });
   }
 

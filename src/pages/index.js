@@ -133,7 +133,7 @@ function handleLikeCardClick(card) {
 
 function handleDeleteCardClick(card) {
   cardDeleteConfirmation.open();
-  cardDeleteConfirmation.handleDeleteCardConfirmation(() => {
+  cardDeleteConfirmation.setSubmitHandler(() => {
     api
       .deleteCard(card.getCardId())
       .then((res) => {
