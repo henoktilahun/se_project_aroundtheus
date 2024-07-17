@@ -170,7 +170,7 @@ function handleAddCardFormSubmit(cardData) {
       const name = cardData.name;
       const link = cardData.link;
       const _id = cardData._id;
-      createCard({ name, link, _id });
+      createCard(cardData);
       cardAddFormPopup.close();
       cardAddForm.reset();
     })
@@ -212,6 +212,7 @@ addCardButton.addEventListener("click", () => {
 });
 editAvatarButton.addEventListener("click", () => {
   editAvatarPopup.open();
+  formValidators["avatar-form"].toggleButtonState();
 });
 
 /** VALIDATION */
