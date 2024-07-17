@@ -24,6 +24,12 @@
             src="<%= require('./images/jacques-cousteau.png')%>"
             alt="Profile Picture"
           />
+          <button
+            class="profile__avatar-button"
+            id="profile-avatar-button"
+            aria-label="Edit Avatar"
+            type="button"
+          ></button>
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button
@@ -65,7 +71,7 @@
               class="modal__input"
               id="profile-title-input"
               type="text"
-              name="title"
+              name="name"
               placeholder="Name"
               maxlength="40"
               minlength="2"
@@ -78,7 +84,7 @@
               class="modal__input"
               id="profile-subtitle-input"
               type="text"
-              name="subtitle"
+              name="about"
               placeholder="Description"
               maxlength="200"
               minlength="2"
@@ -105,7 +111,7 @@
               class="modal__input"
               id="card-title-input"
               type="text"
-              name="title"
+              name="name"
               placeholder="Title"
               maxlength="30"
               minlength="1"
@@ -144,6 +150,50 @@
         ></button>
         <img src="" alt="" class="card__image-modal" />
         <p class="modal__description modal__description_image-popup"></p>
+      </div>
+    </div>
+    <!--- Confirm card delete modal -->
+    <div class="modal" id="delete-card-modal">
+      <div class="modal__container">
+        <button
+          class="modal__button modal__close"
+          id="modal-close-button"
+          type="button"
+        ></button>
+        <h3 class="modal__description">Are you sure?</h3>
+        <form class="modal__form modal__form_yes" id="delete-card-form">
+          <button
+            class="modal__button modal__save modal__button_yes"
+            type="submit"
+          >
+            Yes
+          </button>
+        </form>
+      </div>
+    </div>
+    <!--- Edit avatar modal -->
+    <div class="modal" id="avatar-edit-modal">
+      <div class="modal__container">
+        <button
+          class="modal__button modal__close"
+          id="modal-close-button"
+          type="button"
+        ></button>
+        <h3 class="modal__description">Change profile picture</h3>
+        <form class="modal__form" id="avatar-form">
+          <label class="modal__label">
+            <input
+              class="modal__input"
+              id="profile-title-input"
+              type="url"
+              name="name"
+              placeholder="https://somewebsite.com/someimage.jpg"
+              required
+            />
+            <span class="modal__error" id="profile-title-input-error"></span>
+          </label>
+          <button class="modal__button modal__save" type="submit">Save</button>
+        </form>
       </div>
     </div>
     <!-- Card template-->

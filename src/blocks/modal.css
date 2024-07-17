@@ -129,6 +129,14 @@
   color: #ff0000;
 }
 
+.modal__form_yes {
+  padding: 0;
+}
+
+.modal__button_yes {
+  margin-top: 38px;
+}
+
 @media screen and (max-width: 633px) {
   .modal__container {
     max-width: 282px;
@@ -150,5 +158,13 @@
   }
   .modal__form {
     padding-top: 75px;
+  }
+
+  .modal__form_yes {
+    padding: 0;
+  }
+
+  .modal__button_yes {
+    margin-top: 38px;
   }
 }
